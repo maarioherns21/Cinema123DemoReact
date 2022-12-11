@@ -1,10 +1,11 @@
 import express from "express";
-import cors from "cors";
 import mongoose from "mongoose";
+import cors from "cors";
 import bodyParser from "body-parser";
 import dotenv from "dotenv";
-import indexRoutes from "./routes/index.js";
-import userRoutes from "./routes/users.js"
+
+import routeIndex from "./routes/index.js";
+import usersIndex from "./routes/users.js";
 
 const app = express();
 dotenv.config();
@@ -14,18 +15,22 @@ app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 
 app.use(cors());
 
-app.use("/user", userRoutes)
-app.use("/movies", indexRoutes);
+app.use("/movies", routeIndex);
+app.use("/user", usersIndex);
 
 const SERVER = process.env.CONNECTION_URL;
 
 mongoose
   .connect(SERVER, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => console.log("connected to db"))
-  .catch((error) => consosle.log(error.message));
+  .then(() => {
+    console.log("DB Connected");
+  })
+  .catch((error) => {
+    console.log(error.massage);
+  });
 
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT;
 
 app.listen(PORT, () => {
-  console.log(`Express is listening on port ${PORT}`);
+  console.log(`Express is listening on Port ${PORT}`);
 });

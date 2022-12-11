@@ -2,14 +2,17 @@ import mongoose from "mongoose";
 const Schema = mongoose.Schema
 
 
-const userSchema = new Schema({
+const userSchema = new Schema( {
     username: String,
+    email: String,
     password: String,
-    createdAt: {
-        type: Date,
-        default: new Date(),
-      },
-})
+    photoUrl: String,
+    bio: String,
+  },
+  {
+    timestamps: true,
+  }
+);
 
 const User  = mongoose.model("user", userSchema, "user" )
 

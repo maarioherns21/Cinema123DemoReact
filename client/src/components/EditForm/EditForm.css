@@ -23,6 +23,7 @@
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
     margin: 15% auto; /* 15% from the top and centered */
     padding: 20px;
+    padding-left: 120px;
     border-radius: 6px;
     /* display: flex; */
     /* border: 1px solid #888; */

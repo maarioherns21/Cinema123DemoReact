@@ -4,15 +4,17 @@ const Schema =  mongoose.Schema
 
 
 const movieSchema = new Schema({
-   name: String,
-   body: String,
-   creator: String,
-   images: String,
-   createdAt: {
+  user: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+  name: String,
+  body: String,
+  creator: String,
+  images: String,
+  video: String,
+  createdAt: {
     type: Date,
     default: new Date(),
   },
-})
+});
 
 const Movie = mongoose.model("movie", movieSchema,"movie")
 
