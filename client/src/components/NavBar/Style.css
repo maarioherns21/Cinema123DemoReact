@@ -1,14 +1,135 @@
 
 
 .nav {
-    padding: 20px;
-    background: rgb(165, 165, 165);
+    background: #fff;
+    box-sizing: border-box;
     display: flex;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-    border-radius:  15px;
+    flex-direction: row;
+    height: inherit;
+    list-style: none;
+    margin: 0 0 0 12px;
+    padding: 0;
+    width: 100%;
 }
 
 .text {
     text-decoration: none;
 }
+
+.appBar {
+    background: #fff;
+    box-sizing: inherit;
+    align-items: center;
+    display: flex;
+    border-bottom: solid 1px rgba(242, 242, 242, 1);
+    flex-direction: row;
+    height: inherit;
+    list-style: none;
+    margin: 0 0 0 12px;
+    padding: 0;
+    width: 100%;
+    justify-content: space-around;
+   
+
+}
+
+.heading  {
+    font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #000000;
+    text-decoration: none;
+    font-size: 10px;
+    font-weight: 400;
+    padding: 20px;
+    box-sizing: inherit;
+    align-items: center;
+    display: inline-flex;
+    margin-bottom: 0;
+    order: 1;
+    outline: none;
+}
+
+.toolbar {
+    display: flex;
+    justify-content: flex-end;
+    width: 400px;
+    align-items: center;
+    display: inline-flex;
+    margin-bottom: 0;
+    order: 1;
+    outline: none;
+
+}
+
+.brandContainer {
+    display: flex;
+    align-items: center;
+}
+
+.search {
+    display: flex;
+}
+/* .profile {
+display: flex;
+justify-content: space-between;
+width: 400px;
+align-items: center;
+} */
+
+
+
+
+/* profile: {
+display: 'flex',
+justifyContent: 'space-between',
+width: '400px',
+alignItems: 'center',
+[theme.breakpoints.down('sm')]: {
+  width: 'auto',
+  marginTop: 20,
+  justifyContent: 'center',
+}, */
+/* ppBar: {
+    borderRadius: 0,
+    marginBottom: '100px',
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    padding: '10px 50px',
+    [theme.breakpoints.down('sm')]: {
+        flexDirection: 'column',
+      },
+},
+heading: {
+color: '#000000',
+textDecoration: 'none',
+fontSize: '14px',
+fontWeight: 300,
+padding: '5px',
+},
+image: {
+marginLeft: '10px',
+marginTop: '5px',
+},
+toolbar: {
+display: 'flex',
+justifyContent: 'flex-end',
+width: '400px',
+[theme.breakpoints.down('sm')]: {
+  width: 'auto',
+},
+},
+
+},
+logout: {
+marginLeft: '20px',
+},
+userName: {
+display: 'flex',
+alignItems: 'center',
+textAlign: 'center',
+},
+brandContainer: {
+display: 'flex',
+alignItems: 'center',
+} */

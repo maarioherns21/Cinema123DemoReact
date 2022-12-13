@@ -1,25 +1,34 @@
 import { Root, classes } from "./Styles"
-import {Card, CardActions, CardContent, Typography, CardMedia} from "@mui/material"
+import {Card, CardActions, CardContent, Typography, CardMedia, Button} from "@mui/material"
 import {Link} from 'react-router-dom'
+import { maxWidth } from "@mui/system";
 
 const MovieCard = ({movie}) => {
 
 
-return (
-  <div>
-    <Link to={`/movie/${movie._id}`}>
-      <img src={movie.images} alt={movie.name} />
-      <h2>{movie.name}</h2>
-    </Link>
-  </div>
-);
+  return (
+    <Card component={Link} to={`/movie/${movie._id}`} style={{ backgroundColor: "inherit"}} sx={{ maxWidth: 345 }}>
+      <CardMedia
+        component="img"
+        alt={movie.name}
+        height="450"
+        image={movie.images}
+      />
+      <CardContent  style={{ display:"flex" , justifyContent: "center" }} >
+      <Typography variant="h6" >
+        {movie.name}
+        </Typography>
+      </CardContent>
+    </Card>
+  );
 
-    
+
 }
 
 export default MovieCard
 
 
+    
 
 
 
@@ -48,24 +57,5 @@ export default MovieCard
 
 
 
-//   return (
-//     <Root>
-//       <Card className={classes.root}>
-//         <div style={{ alignContent: "center", display: "flex",  justifyContent: "space-evenly", maxHeight: "325px"}} >
-//           <img src={movie.images} alt={movie.name} />
-//         </div>
 
-//         <CardContent>
-//           <CardActions disableSpacing>
-//             <div className={classes.cardContent}>
-//               <Link to={`/movie/${movie._id}`} className={classes.link}>
-//                 <Typography gutterBottom variant="body1" component="h2">
-//                   {movie.name}
-//                 </Typography>
-//               </Link>
-//             </div>
-//           </CardActions>
-//         </CardContent>
-//       </Card>
-//     </Root>
-//   );
+

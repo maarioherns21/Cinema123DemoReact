@@ -2,6 +2,8 @@ import { useNavigate, useParams } from 'react-router-dom'
 import useFetch from '../../useFetch/useFetch'
 import MovieItem from './MovieItem/MovieItem';
 import '../Styles.css'
+import { CircularProgress, Paper } from '@mui/material';
+
 
 const MovieDetails = () => {
   const params = useParams();
@@ -10,7 +12,6 @@ const MovieDetails = () => {
   const navigate = useNavigate();
 
 
-  
   const handleDelete = async () => {
     await fetch(`http://localhost:4000/movies/${params.id}`, {
       method: "DELETE",
@@ -20,14 +21,20 @@ const MovieDetails = () => {
     });
   };
 
-
-
+  if (!movie) {
+    return (
+      <Paper elevation={6} style={{  display: "flex", justifyContent: "center",  alignItems: "center",
+      padding: "20%" ,  height: "39vh", }}>
+        <CircularProgress size="7em" />
+      </Paper>
+    );
+  }
 
   return (
-    <div className="home">
+    <div className="">
       <div>{error ? error : null}</div>
       <div>{isLoading ? "Loading..." : ""}</div>
-      {movie && <MovieItem movie={movie} handleDelete={handleDelete} />}
+     <MovieItem movie={movie} handleDelete={handleDelete} />
     </div>
   );
 };

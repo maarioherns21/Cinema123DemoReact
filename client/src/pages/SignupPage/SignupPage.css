@@ -23,3 +23,16 @@
     box-sizing: border-box;
     display: block;
 }
+
+.paper {
+    margin-top: 100px ;
+    display: flex;
+    flex-direction: column ;
+    align-items: center ;
+    padding: 30px ;
+}
+
+.avatar {
+    margin: 20px;
+    background-color: white;
+}

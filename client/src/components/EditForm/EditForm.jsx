@@ -1,3 +1,4 @@
+import { Button, TextField , Container, Paper, Grid} from "@mui/material";
 import { useState } from "react"
 import FileBase64 from "react-file-base64";
 import { useNavigate, useParams } from "react-router-dom";
@@ -37,27 +38,24 @@ const EditForm  = ({movie}) =>{
       setFormData({ name: movie.name,  body: movie.body,  creator: movie.creator, images: movie.images, video: movie.video });
     };
     
-    
     return (
-      <div className="form">
-        <form className="modal-content" onSubmit={handleSubmit}>
-          <input value={formData.name} onChange={(e) => setFormData({...formData, name: e.target.value})} required />
-          <textarea value={formData.body} onChange={(e) => setFormData({...formData, body: e.target.value})}  />
-          <select value={formData.creator} onChange={(e) => setFormData({...formData, creator: e.target.value})} >
-            <option value="mario">mario</option>
-            <option value="mark">mark</option>
-          </select>
-          <FileBase64 value={formData.images} type="file" multiple={false} onDone={({base64}) => setFormData({...formData , images: base64})} />
-          <input value={formData.video} type="url" onChange={(e) => setFormData({...formData, video: e.target.value})}  />
-          <button>{isPending ? "Updating.." : "Update Movie"}</button>
-          <button onClick={clear}>clear</button>
+      <Container  fullWidth component="main" maxWidth="xs" style={{ paddingBottom: "250px" }}>
+         <Paper   className="paper" elevation={6}>  
+          <Grid  item sm={6}>
+        <form className="" onSubmit={handleSubmit}>
+      <TextField   variant="standard" style={{ paddingBottom: '15px'}}  fullWidth  required label="title" value={formData.name} onChange={(e) => setFormData({...formData, name: e.target.value})}   />
+      <TextField   variant="standard" style={{ paddingBottom: '15px'}}  fullWidth  required label="body" value={formData.body} onChange={(e) => setFormData({...formData, body: e.target.value})}  />
+      <TextField   variant="standard" style={{ paddingBottom: '15px'}}  fullWidth  required label="video" value={formData.video} type="url" onChange={(e) => setFormData({...formData, video: e.target.value})}   />
+        <FileBase64 value={formData.images} type="file" multiple={false} onDone={({base64}) => setFormData({...formData , images: base64})} /> 
+         <Button   type="submit" fullWidth color="inherit">{isPending ? "Updating.." : "Update Movie"}</Button>
+         <Button   type="submit" fullWidth color="inherit" onClick={clear} >clear</Button>
         </form>
-      </div>
+        </Grid>
+      </Paper>
+  </Container>
     );
-  
-  
+
   
     }
-
 
 export default EditForm

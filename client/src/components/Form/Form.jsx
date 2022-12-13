@@ -1,11 +1,15 @@
 import { useState } from "react"
 import FileBase64 from "react-file-base64";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Form.css"
-
-
+import { Step, Paper, Stepper, StepLabel, Typography, CircularProgress, Divider, Button, CssBaseline, Container } from "@mui/material";
+import FormData from "./FormData";
+import FormImages from "./FormImages";
+import { Root, classes } from "./style";
+const steps = ["Movie Details" , "Submit Movie"];
 
 const Form = () => {
+const [activeStep, setActiveStep] = useState(1);
 const user = JSON.parse(localStorage.getItem('token'))
 
 const [formData, setFormData] =useState({ name: "", body: "", creator: "", images: "", video: ""  })
@@ -37,26 +41,46 @@ await fetch("http://localhost:4000/movies/new", {
 };
 
 const clear = (e) => {
-  e.preventDefault();
-  setFormData({ name: "", body: "", creator: "mario", images: "", video: "" });
-};
+e.preventDefault() 
+setFormData({ name: "", body: "", creator: "mario", images: "", video: "" })};
+
+
+
+const nextStep = () => setActiveStep((prevActiveStep) => prevActiveStep + 1);
+const backStep = () => setActiveStep((prevActiveStep) => prevActiveStep - 1);
+
+
 
 
 return (
-  <div className="form">
-    <form onSubmit={handleSubmit}>
-      <input value={formData.name} onChange={(e) => setFormData({...formData, name: e.target.value})} required />
-      <textarea value={formData.body} onChange={(e) => setFormData({...formData, body: e.target.value})}  />
-      {/* <select value={formData.creator} onChange={(e) => setFormData({...formData, creator: e.target.value})} >
-        <option value="mario">mario</option>
-        <option value="mark">mark</option>
-      </select> */}
-      <FileBase64 value={formData.images} type="file" multiple={false} onDone={({base64}) => setFormData({...formData , images: base64})} />
-      <input value={formData.video} type="url" onChange={(e) => setFormData({...formData, video: e.target.value})}  />
-      <button>{isPending ? "Adding.." : "Add Movie"}</button>
-      <button onClick={clear}>clear</button>
-    </form>
-  </div>
+  <Root>
+    <CssBaseline />
+    <main className={classes.layout}>
+    <Container fullWidth component="main" maxWidth="xs" style={{ paddingBottom: "250px" }}>
+    <Paper className="paper" elevation={6}>
+      <Typography variant="h4" align="center">Add Movies</Typography>
+      <div className={classes.content} />
+        <form onSubmit={handleSubmit}>
+            <Stepper activeStep={activeStep} className={classes.stepper} >
+              {steps.map((step) => (
+                <Step key={step}>
+                  <StepLabel>{step}</StepLabel>
+                </Step>
+              ))}
+            </Stepper>
+            {activeStep === steps.length ? (
+              <FormImages setFormData={setFormData} formData={formData} FileBase64={FileBase64} backStep={backStep} />
+            ) : (
+            <FormData clear={clear} setFormData={setFormData} formData={formData}  nextStep={nextStep} />
+            )} 
+       </form>
+       </Paper>
+       </Container> 
+     </main>
+   
+</Root>
+ 
+  
 );
 
 

@@ -10,6 +10,8 @@ import useToken from "../../components/useToken/useToken"
 import { useState } from "react"
 import SignUpPage from "../SignupPage/SignupPage"
 import LoginPage from "../LoginPage/LoginPage"
+import ProfileHeader from "../../components/ProfileHeader/ProfileHeader"
+
 
 
 
@@ -23,9 +25,12 @@ const {token ,setToken, logout} =useToken()
 
 if(token) {  
     return (
+     
           <BrowserRouter>
+            <ProfileHeader />
             <NavBar logout={logout} />
        <Routes>
+       
             <Route exact path="/*" element={<Home />} />
             <Route exact path="/movie/:id" element={<MovieDetails />}/>
             <Route exact path="/user/:username"   element={<MyMovies logout={logout}/>}/>
