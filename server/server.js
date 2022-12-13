@@ -18,7 +18,11 @@ app.use(cors());
 app.use("/movies", routeIndex);
 app.use("/user", usersIndex);
 
-const SERVER = process.env.CONNECTION_URL;
+app.get("/" , (req,res) => {
+  res.send("hello")
+})
+
+const SERVER = process.env.CONNECTION_URL || 4000;
 
 mongoose
   .connect(SERVER, { useNewUrlParser: true, useUnifiedTopology: true })
@@ -29,7 +33,7 @@ mongoose
     console.log(error.massage);
   });
 
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 4000;
 
 app.listen(PORT, () => {
   console.log(`Express is listening on Port ${PORT}`);
