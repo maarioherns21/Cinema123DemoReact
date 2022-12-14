@@ -12,8 +12,7 @@
   "main": "server.js",
   "type": "module",
   "scripts": {
-    "server": "nodemon server.js",
-    "client": "npm run start --prefix ../client"
+    "start": "nodemon server.js"
   },
   "author": "",
   "license": "ISC",
