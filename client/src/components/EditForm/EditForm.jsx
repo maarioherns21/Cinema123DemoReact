@@ -22,7 +22,7 @@ const EditForm  = ({movie}) =>{
         video: formData.video,
       };
       setIsPending(true);
-      await fetch(`http://localhost:4000/movies/${params.id}`, {
+      await fetch(`https://cinemademo123.herokuapp.com/movies/${params.id}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(movie),

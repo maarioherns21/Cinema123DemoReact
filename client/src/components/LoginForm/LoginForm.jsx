@@ -10,7 +10,7 @@ const [log, setLog] =useState([])
 const handleSubmit = async (e) => {
   e.preventDefault();
   const token = { username: formData.username, password: formData.password };
-  await fetch("http://localhost:4000/users/new", {
+  await fetch("https://cinemademo123.herokuapp.com/users/new", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(token),

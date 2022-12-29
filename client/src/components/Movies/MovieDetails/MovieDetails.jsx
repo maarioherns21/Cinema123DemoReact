@@ -13,7 +13,7 @@ const MovieDetails = () => {
 
 
   const handleDelete = async () => {
-    await fetch(`http://localhost:4000/movies/${params.id}`, {
+    await fetch(`https://cinemademo123.herokuapp.com/movies/${params.id}`, {
       method: "DELETE",
     }).then(() => {
       console.log(` ${movie.name} was deleted from DB`);

@@ -26,7 +26,7 @@ const SignUpPage = ({setToken}) => {
       photoUrl: signForm.photoUrl,
       bio: signForm.bio,
     };
-    await fetch("http://localhost:4000/user/signup", {
+    await fetch("https://cinemademo123.herokuapp.com/user/signup", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(token),

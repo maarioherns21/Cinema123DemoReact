@@ -29,7 +29,7 @@ const handleSubmit = async (e) => {
     video: formData.video,
   };
   setIsPending(true);
-await fetch("http://localhost:4000/movies/new", {
+await fetch("https://cinemademo123.herokuapp.com/movies/new", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(movie),

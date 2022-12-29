@@ -17,7 +17,7 @@ const LoginPage = ({ setToken }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const token = { email: signForm.email, password: signForm.password };
-    await fetch("http://localhost:4000/user/login", {
+    await fetch("https://cinemademo123.herokuapp.com/user/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(token),

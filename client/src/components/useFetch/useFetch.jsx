@@ -23,7 +23,7 @@ export default function useFetch() {
 
 
   useEffect(() => {
-    fetch("http://localhost:4000/movies")
+    fetch("https://cinemademo123.herokuapp.com/movies")
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
