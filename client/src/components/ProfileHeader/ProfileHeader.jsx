@@ -9,7 +9,7 @@ const ProfileHeader = () => {
 
     <Container  maxWidth="xl" fullWidth >
    <div className="profile" position="static" >
-    <div>hello</div>
+    <div style={{ paddingLeft:"30px", fontFamily:"fantasy"}}>Cinema123</div>
     <div>
         <Link to={`/user/${user?._id}`}>
           <img
